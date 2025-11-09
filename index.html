@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Raswati</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .payment-card {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+        }
+
+        .payment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: #00a3ff;
+        }
+
+        .payment-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .payment-info {
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .info-label {
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #f0f0f0;
+        }
+
+        .copy-btn {
+            background-color: #333;
+            border: none;
+            color: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn:hover {
+            background-color: #444;
+            transform: translateY(-2px);
+        }
+
+        .telegram-card {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            border: 1px solid #333;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telegram-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #0088cc, #00a3ff);
+        }
+
+        .telegram-icon {
+            font-size: 3rem;
+            color: #0088cc;
+            margin-bottom: 15px;
+        }
+
+        .telegram-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .telegram-desc {
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0088cc, #00a3ff);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
+
+        .telegram-btn i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .payment-card, .telegram-card {
+                padding: 20px;
+            }
+            
+            .payment-title, .telegram-title {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">PAYMENT</div>
+            <p class="tagline">Lakukan pembayaran dengan mudah dan aman</p>
+        </header>
+
+        <div class="payment-card">
+            <div class="payment-header">
+                <i class="fas fa-wallet payment-icon"></i>
+                <h2 class="payment-title">Pembayaran DANA</h2>
+            </div>
+            <div class="payment-info">
+                <div class="info-item">
+                    <span class="info-label">Nomor DANA</span>
+                    <span class="info-value">082117212339</span>
+                    <button class="copy-btn" onclick="copyToClipboard('082117212339')">
+                        <i class="fas fa-copy"></i> Salin
+                    </button>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Nama Penerima</span>
+                    <span class="info-value">RASWATI</span>
+                    <button class="copy-btn" onclick="copyToClipboard('RASWATI')">
+                        <i class="fas fa-copy"></i> Salin
+                    </button>
+                </div>
+            </div>
+            <div class="payment-instruction">
+                <h3 style="margin-bottom: 10px; color: #feca57;">Instruksi Pembayaran:</h3>
+                <ol style="padding-left: 20px; line-height: 1.6; color: #ccc;">
+                    <li>Buka aplikasi DANA di smartphone Anda</li>
+                    <li>Pilih menu "Kirim" atau "Transfer"</li>
+                    <li>Masukkan nomor DANA <strong>082117212339</strong></li>
+                    <li>Pastikan nama penerima adalah <strong>RASWATI</strong></li>
+                    <li>Masukkan jumlah yang ingin ditransfer</li>
+                    <li>Konfirmasi dan selesaikan transaksi</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="telegram-card">
+            <i class="fab fa-telegram telegram-icon"></i>
+            <h2 class="telegram-title">Grup Telegram</h2>
+            <p class="telegram-desc">Bergabunglah dengan grup Telegram kami untuk mendapatkan informasi terbaru, bantuan, dan komunitas yang solid.</p>
+            <a href="https://t.me/suprotinfo" target="_blank" class="telegram-btn">
+                <i class="fab fa-telegram"></i> Gabung Grup
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Payment Gateway. All rights reserved.</p>
+    </footer>
+
+    <div class="notification" id="notification">
+        Teks berhasil disalin!
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            
+            // Tampilkan notifikasi
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            
+            // Sembunyikan notifikasi setelah 3 detik
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
